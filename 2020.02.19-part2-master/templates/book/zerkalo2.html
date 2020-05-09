@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="static\css.css" href="Osnova" rel='stylesheet' type="text/css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    
+    <title>Lili</title>
+    <style>
+    .shadow-4:hover {
+        box-shadow:0 0 6px 6px #555; 
+        -webkit-transition: all 0.5s ease;
+        -moz-transition: all 0.5s ease;
+        transition: all 0.5s ease;
+    }
+
+    .shadow-4 {
+        -webkit-transition: all 0.5s ease;
+        -moz-transition: all 0.5s ease;
+        transition: all 0.5s ease;
+    }
+    
+    #p1 {
+        font-size: 25px;
+    }
+
+    .flip-card {
+        background-color: transparent;
+        width: 300px;
+        height: 300px;
+        border: 10px solid #0808085b;
+        perspective: 1000px; 
+      }
+      
+      .flip-card-inner {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        text-align: center;
+        transition: transform 0.8s;
+        transform-style: preserve-3d;
+      }
+      
+      .flip-card:hover .flip-card-inner {
+        transform: rotateY(180deg);
+      }
+      
+      .flip-card-front, .flip-card-back {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
+      }
+      
+      .flip-card-front {
+        background-color: #bbb;
+        color: black;
+      }
+      
+      .flip-card-back {
+        background-color: dodgerblue;
+        color: white;
+        transform: rotateY(180deg);
+      }
+
+      body {
+      font-family: 'Lato', sans-serif;
+      }
+
+      .overlay {
+      height: 0%;
+      width: 100%;
+      position: fixed;
+      z-index: 1;
+      top: 0;
+      left: 0;
+      background-color: rgb(0,0,0);
+      background-color: rgba(0,0,0, 0.9);
+      overflow-y: hidden;
+      transition: 0.5s;
+      }
+
+      .overlay-content {
+      position: relative;
+      top: 25%;
+      width: 100%;
+      text-align: center;
+      margin-top: 30px;
+      outline: 2px solid rgb(255, 251, 251);
+      width: 300px;
+      height: 400px;
+      margin:0 auto;
+      }
+
+      .overlay a {
+      padding: 8px;
+      text-decoration: none;
+      font-size: 36px;
+      color: #818181;
+      display: block;
+      transition: 0.3s;
+      }
+
+      .overlay a:hover, .overlay a:focus {
+      color: #f1f1f1;
+      }
+
+      .overlay .closebtn {
+      position: absolute;
+      top: 20px;
+      right: 45px;
+      font-size: 60px;
+      }
+
+      @media screen and (max-height: 450px) {
+      .overlay {overflow-y: auto;}
+      .overlay a {font-size: 20px}
+      .overlay .closebtn {
+      font-size: 40px;
+      top: 15px;
+      right: 35px;
+      }
+      }
+      
+      .div1{
+          outline: 2px solid rgb(255, 251, 251);
+          width: 150px;
+          height: 35px;
+          margin:0 auto;
+      }
+
+      .body2 {
+          background: url(my-image.jpg);
+          background-size: 100% 100%;
+          background-repeat: no-repeat;
+          background-attachment: fixed;
+          background: linear-gradient(90deg, #b9deed, #efefef);
+      }
+
+      .imgleft {
+          float: left;
+          margin-left: 20px;
+      }
+    </style>
+</head>
+<body class="body2">
+        <div id="header">
+            <h1>
+                <a href='/' id='atop'>Lili</a>
+                ЗЕРКАЛО
+            </h1>
+        </div>
+        <div class="">
+            <p>
+                {% if flag %}
+                    <div>
+                        <table style="outline: 2px solid rgb(160, 157, 157); width: 100px; height: 100px; float: right; box-shadow: 0.2em 0.2em 14px rgba(0, 0, 0, 0.5); margin-right: 10px;">
+                            <tr>
+                                <td style="border-spacing: 20px; vertical-align:top;" >
+                                    <p align="center" > 
+                                        <div id="myNav" class="overlay">
+                                            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                                            <div class="overlay-content">
+                                                <div class="">
+                                                    <p> 
+                                                        {% if men %}
+                                                            <span style="font-size:30px;cursor:pointer" onclick="openNav()"><img src = "static/img/img_avatar.png " alt = "Аватар" style="border-radius: 50%; width: 150px;"></span>
+                                                        {% elif men == None %}
+                                                            <span style="font-size:30px;cursor:pointer" onclick="openNav()"><img src = "static/img/img_avatar3.png " alt = "Аватар" style="border-radius: 50%; width: 150px;"></span>
+                                                        {% else %}
+                                                            <span style="font-size:30px;cursor:pointer" onclick="openNav()"><img src = "static/img/img_avatar2.png " alt = "Аватар" style="border-radius: 50%; width: 150px;"></span>
+                                                        {% endif %}
+                                                    </p>
+                                                    {% if men %}
+                                                        <p style="color: rgb(255, 255, 255);">Теперь ты в наших кругах, брат.</p>
+                                                    {% elif men == None %}
+                                                        <p style="color: rgb(255, 255, 255);">Парень или девочка?</p>
+                                                        <div class="div1"><a href="girl" style="color: white; font-size: 20px;">Да, я девочка!</a></div>
+                                                        <p></p>
+                                                        <div class="div1" style="width: 180px;"><a href="men" style="color: white; font-size: 20px;">Ты что, я мужик!</a></div>
+                                                    {% else %}
+                                                        <p style="color: rgb(255, 255, 255);">Теперь ты в наших кругах, сестра.</p>
+                                                    {% endif %}
+                                                    <p></p>
+                                                    <p style="color: rgb(255, 255, 255);"><a href="delete_log">Выйти</a></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        {% if men %}
+                                            <span style="font-size:30px;cursor:pointer" onclick="openNav()"><img src = "static/img/img_avatar.png " alt = "Аватар" class="shadow-4" style="border-radius: 50%; float: right; width: 70px; margin-right: 10px; margin-top: 1px;"></span>
+                                        {% elif men == None %}
+                                        <span style="font-size:30px;cursor:pointer" onclick="openNav()"><img src = "static/img/img_avatar3.png " alt = "Аватар" class="shadow-4" style="border-radius: 50%; float: right; width: 70px; margin-right: 10px; margin-top: 1px;"></span>
+                                        {% else %}
+                                            <span style="font-size:30px;cursor:pointer" onclick="openNav()"><img src = "static/img/img_avatar2.png " alt = "Аватар" class="shadow-4" style="border-radius: 50%; float: right; width: 70px; margin-right: 10px; margin-top: 1px;"></span>
+                                        {% endif %}
+                                        <script>
+                                        function openNav() {
+                                            document.getElementById("myNav").style.height = "100%";
+                                        }
+                                        
+                                        function closeNav() {
+                                            document.getElementById("myNav").style.height = "0%";
+                                        }
+                                        </script>
+                                    </p>
+                                </td>
+                        
+                                
+                            </tr>
+                            <tr>
+                                <td style="vertical-align:bottom;">
+                                    <p align="center" ><a href="delete_log" id="knopka" style="text-decoration: none;">Выйти</a></p>
+                                </td>
+                            </tr>
+                        </table>
+
+                    </div>
+                {% endif %}
+            </p>
+        </div>
+            <div style="height: 150px;">
+                <ul id="navbar" style="height: 250px;">
+                    {% if flag == False %}
+                        <li><a href="login" class="ali">Войти</a></li>
+                        <li><a href="register" class="ali">Регистрация</a></li>
+                    {% endif %}
+                    {% if flag %}
+                        <li><a href="Lyshee" class="ali">Лучшее</a></li>
+                        <li><a href="Contact" class="ali">Контакты</a></li>
+                        <li><a href="O nas" class="ali">О нас</a></li>
+                        {% if admi %}
+                        <li><a href="Admin" class="ali">админ</a></li>
+                        {% endif %}
+                    {% endif %}
+                </ul>
+                
+            </div>   
+    </div>
+    <div class='imgleft'>
+        <img style="outline: 4px solid rgb(143, 143, 143); box-shadow: 0.3em 0.6em 18px rgba(0, 0, 0, 0.5);" src="static/img/BC4_1587725254.jpg">
+    </div>
+    <div>
+        <h1 style="margin-left: 43%; width: 250px; height: 60px; font-family:Lobster, cursive; Font-size:30px; font-size: 45px;">ЗЕРКАЛО</h1>
+       <div style="margin:0 auto; margin-bottom: 40px; outline: 2px solid rgb(129, 129, 129); width: 1200px; height: 5700px;">
+            <div style="margin: 20px;">
+                <p>
+                    <h3 style="font-size: 25px;">Ника Ракитина</h3>
+                    <h3 style="font-family:Lobster, cursive; font-size: 25px;">ЗЕРКАЛО - 2 часть</h3>
+                    <p id="p1">Сельма открыла, сказала обычным голосом:</p>
+                    <p id="p1">— Настя? Очень хорошо. Проходи.</p>
+                    <p id="p1">Но в глубине длинных глаз поселилось удивление.</p>
+                    <p id="p1">— Я обедаю. Будешь?</p>
+                    <p id="p1">Туська быстро закивала.</p>
+                    <p id="p1">Смывая с рук земляничную пену и вытирая их розовым махровым полотенцем, она изумлялась, что ничто не изменилось, что все та же ласковая и покойная жизнь вокруг и отчего же ей хочется спрятаться, забиться в угол, и те двое в форме, оторвавшие тетку от перил, а Гематоген… Минька его покормит, или забудет, он ненадежный, этот Минька…</p>
+                    <p id="p1">— Сельма, тетю арестовали!</p>
+                    <p id="p1">Она рассказывала, глотая слезы и путаясь в словах, а Сельма слушала, знакомо подпирая рукой подбородок, и в ее глазах виделись Туське внимание и сочувствие.</p>
+                    <p id="p1">Туська кончила и замолчала. Сельма положила ей руку на плечо, и Туська стерпела — Сельме позволялось многое. А больше всего хотелось уткнуться в горошковый халатик и, чувствуя себя под защитой, заплакать. И оттого слова Сельмы были как удар.</p>
+                    <p id="p1">— По-моему, ты должна отдать зеркало.</p>
+                    <p id="p1">Туська молчала, приоткрыв рот. А Сельма говорила, и слова ударяли, как молоточек по шляпкам гвоздей.</p>
+                    <p id="p1">— Понимаешь, иногда так бывает. Это долг, и ничего не изменишь. Ты уже взрослая, ты должна понимать, что жизнь человека дороже зеркала.</p>
+                    <p id="p1">— Но это несправедливо! Я не больная, и она не больная. Я докажу!</p>
+                    <p id="p1"> Она стряхнула руку Сельмы, вскочила.</p>
+                    <p id="p1">— Ты веришь мне?</p>
+                    <p id="p1">— Я?.. Да-а..</p>
+                    <p id="p1">— Тогда послушай. Тетю надо спасти. Правильно?</p>
+                    <p id="p1">Туська покорно кивнула.</p>
+                    <p id="p1">— А для этого надо вернуть зеркало. И чем скорее, тем лучше. Объяснишь, что маленькая, перепугалась…</p>
+                    <p id="p1">— Я не маленькая!</p>
+                    <p id="p1">Сельма тряхнула плечом:</p>
+                    <p id="p1">— Неважно. Если хочешь, я позвоню, все объясню. Прямо сейчас.</p>
+                    <p id="p1">Она направилась к прихожей.</p>
+                    <p id="p1">— Нет!</p>
+                    <p id="p1">Когда Сельма обернулась, в глазах было все то же холодное удивление:</p>
+                    <p id="p1"> — Ты не хочешь? Но так нужно!</p>
+                    <p id="p1">— Кому — нужно?! — она кричала на учительницу, которую любила… когда-то любила, уточнила Туська, в прошлой жизни. Которой нет. — Кому нужно-то? — повторила она тише. — Кому?</p>
+                    <p id="p1">— Твоей тете. Чтобы ее выпустили… из изолятора. Ведь ты ее любишь?</p>
+                    <p id="p1">Туська проглотила комок:</p>
+                    <p id="p1">— Но ведь оно последнее. В городе. В стране. А может, на земле.</p>
+                    <p id="p1">— Ты в это веришь?</p>
+                    <p id="p1">— А вы… верите, что зеркала несут зло?</p>
+                    <p id="p1">Она смотрела в коричневые глаза Сельмы и думала, что будет, если та солжет.</p>
+                    <p id="p1">Или ничего не будет, потому что взрослые всегда лгут, а им никогда ничего не бывает? Даже самые лучшие…</p>
+
+                    <p id="p1">— Я не знаю. Честное слово, не знаю. Но надо позвонить. Так будет лучше…</p>
+                    <p id="p1">— Оно красивое. Из Юр-Тогосского серебра. Очень старое.</p>
+                    <p id="p1">— Мне хотелось бы посмотреть, — сказала Сельма тихо. — Можно?</p>
+                    <p id="p1">— У меня его нет, — легко солгала Туська. — Я его спрятала. За гаражи. Принести?</p>
+                    <p id="p1">В глазах Сельмы что-то мелькнуло.</p>
+                    <p id="p1">— Нет. Тебе опасно. Я сама. Только ты объясни подробно, где искать. А сама жди меня. Поешь. После позвоним. Ведь тебя будут искать. Вечером объявят по «ящику». И фотография у них наверняка есть. А ты не сможешь долго прятаться.</p>
+                    <p id="p1">Туська кивнула. В этом Сельма была права. И все равно она сдаваться не собиралась.</p>
+                    <p id="p1">— Ну, я пошла.</p>
+                    <p id="p1">Туська подождала минут пять после того, как хлопнула дверь. Суп, пусть и остывший, пах так, что голова шла кругом. Но Туська не стала есть, взяла только кусок хлеба и, на ходу запихивая в рот, вылезла в окно.</p>
+
+                    <p id="p1">Толстый мальчик шел по улице и уплетал мороженое — со вкусом и знанием дела — выедал сливочную начинку, подольше сберегая шоколад. У Туськи слюнки потекли. Если мальчишка так произдевается еще минуту, она выскочит, стукнет его и отберет мороженое. Но мальчишка ушел. Зато к кустам, где она пряталась, подошел пес и стал нюхать воздух.</p>
+                    <p id="p1">— Кыш-ш, — зашипела на пса Туська. Не хватало еще, чтобы прибежал хозяин узнать, что его скотина унюхала. Пес, обиженно понурясь, отошел. В кустах было сыро, грызлись комары. Но Туська просто не решалась подняться в квартиру родителей: вдруг их тоже… изолировали… как тетю. Арестовали, поправила она себя, пусть взрослые лгут и притворяются. А она не станет. Назло всем! И тут из подъезда вышла мама. Отец вел ее под руку, рассказывая что-то, мама улыбалась.</p>
+                    <p id="p1">Туська медленно поднялась навстречу. Не кинулась, как всегда, не повисла с визгом, забывая, что взрослая. Ждала.</p>
+                    <p id="p1">— Анастасия, — сказал отец. — Нас предупредили, что ты можешь появиться. Идем.</p>
+                    <p id="p1">У Туськи дрогнули губы.</p>
+                    <p id="p1">— Куда?</p>
+                    <p id="p1">Отец (совсем как Антошка) пожал плечами:</p>
+                    <p id="p1">— Домой, конечно. Поешь, помоешься. Ты безобразно грязная.</p>
+                    <p id="p1">— А меня арестуют?</p>
+                    <p id="p1">Брови отца поползли вверх:</p>
+                    <p id="p1">— Арестуют? С чего ты взяла? Разумеется, тебя посмотрит врач. Мало чего ты могла подцепить за неделю…</p>
+                    <p id="p1">— А тетя?</p>
+                    <p id="p1">— Это было недоразумение, — с нажимом произнес отец. — Понимаешь, не-до-разу-ме-ние. Она звонила нам два дня назад, за тебя беспокоилась. Мы тебя к ней отвезем…</p>
+                    <p id="p1">— Если захочешь, конечно, — неуверенно вставила мать.</p>
+                    <p id="p1"> — А зеркало?</p>
+                    <p id="p1">Она стояла и ждала, что они ответят, но уже сейчас полз из живота ледяной холодок, потому что Туська заранее знала ответ.</p>
+                    <p id="p1">— Понимаешь, так будет лучше. Понимаешь, мы хотим тебе только добра.</p>
+                    <p id="p1">— А мне не нужно ваше добро.</p>
+                    <p id="p1">Конечно, она могла попытаться им что-либо объяснить… про сказку, и что ее нужно защищать… даже если одна против всех. А они заладят свое. Она может утонуть в их вранье! Ненастоящие. Или это она ненастоящая? Когда она заглядывала в зеркало, то видела там чужую девчонку с ненормальным худым лицом и глазами. Может, они правы, а она ненормальная, когда прячется и всех боится и прячет зеркало, а может, надо наоборот? Она уже почти сдалась и поверила им, когда отец сказал, хватая ее за плечо:</p>
+                    <p id="p1">— Ну, хватит! Потом будешь разводить философию. Пошли.</p>
+                    <p id="p1">— Я не пойду.</p>
+                    <p id="p1">— Пойдешь. Как миленькая, — отец встряхнул ее, как деревянную марионетку.</p>
+                    <p id="p1">— Осторожнее, Андрей!</p>
+                    <p id="p1">— Хватит, доосторожничались, — он выплевывал слова, как болотную жижу, в которой лежал под Юр-Тогосом и откуда вынес шрам арбалетной стрелы. — Доигрались в гуманность. С этими учителями, с инновациями. Поздно ее арестовали. шрам арбалетной стрелы. — Доигрались в гуманность. С этими учителями, с инновациями. Поздно ее арестовали.</p>
+                    <p id="p1">— Кого — арестовали? — переспросила Туська шершавым голосом. В ней словно хрустнуло все, переломилось, окончилось.</p>
+                    <p id="p1">— Сельма, — спросила она. — Сельма, да?</p>
+                    <p id="p1">И рванулась. Платье лопнуло не плече. Но она была свободна.</p>
+
+                    <p id="p1"> Она бежала, как никогда в жизни. Босоножка подвела, ногу вывернуло, и Туська кубарем покатилась с обрыва, обдирая колени и локти, инстинктивно стараясь уберечь заткнутое за резинку трусиков зеркальце. Позади ломала кусты безнадежно отставшая погоня.</p>
+                    <p id="p1">Туську выкатило на пирс, к пустому морю и небу, проткнутому насквозь мачтой одинокой яхты. Плача (не потому, что горели синяки и царапины), сползла к воде. Пришла мысль спрятать здесь зеркальце и бежать. Пусть тогда ловят. Но это было бы как предательство.</p>
+                    <p id="p1">— Барышня!</p>
+                    <p id="p1">Туська резко обернулась.</p>
+                    <p id="p1">С яхты свешивался бородатый моряк с трубкой в зубах и пронзительно синими глазами. Таких рисуют на картинках старых книжек: докрасна загорелых, с волосатыми руками и ослепительной улыбкой, они щурят глаза от ветра и зычно изрекают: «Право руля! По бим-бом-брамселям!» Не хватало разве попугая на плече, вопящего: «Пиастры! Пиастры!» Туська попыталась улыбнуться и плеснула водой в лицо, на котором слезы вымыли две светлые дорожки.</p>
+                    <p id="p1">— Барышня, не желаете ли составить компанию старому морскому волку?</p>
+                    <p id="p1">Вместо ответа Туська стала пробираться к яхте по острым верхушкам камней, торчащих из воды.</p>
+                    <p id="p1">Когда подоспела погоня, на берегу уже никого не было, и только яхта резала крылом горизонт.</p>
+                    <p></p>
+                    <p align="center" style="font-size: 30px;">2</p>
+                </p>
+                <p align="center"><a  href="zerkalo" id="knopka" style="font-size: 25px;">1 страница</a></p>
+            </div>  
+        </div>
+    </div>
+</body>
+</html>

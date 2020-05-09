@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="static\css.css" href="Osnova" rel='stylesheet' type="text/css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    
+    <title>Lili</title>
+    <style>
+    .shadow-4:hover {
+        box-shadow:0 0 6px 6px #555; 
+        -webkit-transition: all 0.5s ease;
+        -moz-transition: all 0.5s ease;
+        transition: all 0.5s ease;
+    }
+
+    .shadow-4 {
+        -webkit-transition: all 0.5s ease;
+        -moz-transition: all 0.5s ease;
+        transition: all 0.5s ease;
+    }
+    
+    #p1 {
+        font-size: 25px;
+    }
+
+    .flip-card {
+        background-color: transparent;
+        width: 300px;
+        height: 300px;
+        border: 10px solid #0808085b;
+        perspective: 1000px; 
+      }
+      
+      .flip-card-inner {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        text-align: center;
+        transition: transform 0.8s;
+        transform-style: preserve-3d;
+      }
+      
+      .flip-card:hover .flip-card-inner {
+        transform: rotateY(180deg);
+      }
+      
+      .flip-card-front, .flip-card-back {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
+      }
+      
+      .flip-card-front {
+        background-color: #bbb;
+        color: black;
+      }
+      
+      .flip-card-back {
+        background-color: dodgerblue;
+        color: white;
+        transform: rotateY(180deg);
+      }
+
+      body {
+      font-family: 'Lato', sans-serif;
+      }
+
+      .overlay {
+      height: 0%;
+      width: 100%;
+      position: fixed;
+      z-index: 1;
+      top: 0;
+      left: 0;
+      background-color: rgb(0,0,0);
+      background-color: rgba(0,0,0, 0.9);
+      overflow-y: hidden;
+      transition: 0.5s;
+      }
+
+      .overlay-content {
+      position: relative;
+      top: 25%;
+      width: 100%;
+      text-align: center;
+      margin-top: 30px;
+      outline: 2px solid rgb(255, 251, 251);
+      width: 300px;
+      height: 400px;
+      margin:0 auto;
+      }
+
+      .overlay a {
+      padding: 8px;
+      text-decoration: none;
+      font-size: 36px;
+      color: #818181;
+      display: block;
+      transition: 0.3s;
+      }
+
+      .overlay a:hover, .overlay a:focus {
+      color: #f1f1f1;
+      }
+
+      .overlay .closebtn {
+      position: absolute;
+      top: 20px;
+      right: 45px;
+      font-size: 60px;
+      }
+
+      @media screen and (max-height: 450px) {
+      .overlay {overflow-y: auto;}
+      .overlay a {font-size: 20px}
+      .overlay .closebtn {
+      font-size: 40px;
+      top: 15px;
+      right: 35px;
+      }
+      }
+      
+      .div1{
+          outline: 2px solid rgb(255, 251, 251);
+          width: 150px;
+          height: 35px;
+          margin:0 auto;
+      }
+
+      .body2 {
+          background: url(my-image.jpg);
+          background-size: 100% 100%;
+          background-repeat: no-repeat;
+          background-attachment: fixed;
+          background: linear-gradient(90deg, #b9deed, #efefef);
+      }
+
+      .imgleft {
+          float: left;
+          margin-left: 20px;
+      }
+    </style>
+</head>
+<body class="body2">
+        <div id="header">
+            <h1>
+                <a href='/' id='atop'>Lili</a>
+                О принцах и драконах
+            </h1>
+        </div>
+        <div class="">
+            <p>
+                {% if flag %}
+                    <div>
+                        <table style="outline: 2px solid rgb(160, 157, 157); width: 100px; height: 100px; float: right; box-shadow: 0.2em 0.2em 14px rgba(0, 0, 0, 0.5); margin-right: 10px;">
+                            <tr>
+                                <td style="border-spacing: 20px; vertical-align:top;" >
+                                    <p align="center" > 
+                                        <div id="myNav" class="overlay">
+                                            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                                            <div class="overlay-content">
+                                                <div class="">
+                                                    <p> 
+                                                        {% if men %}
+                                                            <span style="font-size:30px;cursor:pointer" onclick="openNav()"><img src = "static/img/img_avatar.png " alt = "Аватар" style="border-radius: 50%; width: 150px;"></span>
+                                                        {% elif men == None %}
+                                                            <span style="font-size:30px;cursor:pointer" onclick="openNav()"><img src = "static/img/img_avatar3.png " alt = "Аватар" style="border-radius: 50%; width: 150px;"></span>
+                                                        {% else %}
+                                                            <span style="font-size:30px;cursor:pointer" onclick="openNav()"><img src = "static/img/img_avatar2.png " alt = "Аватар" style="border-radius: 50%; width: 150px;"></span>
+                                                        {% endif %}
+                                                    </p>
+                                                    {% if men %}
+                                                        <p style="color: rgb(255, 255, 255);">Теперь ты в наших кругах, брат.</p>
+                                                    {% elif men == None %}
+                                                        <p style="color: rgb(255, 255, 255);">Парень или девочка?</p>
+                                                        <div class="div1"><a href="girl" style="color: white; font-size: 20px;">Да, я девочка!</a></div>
+                                                        <p></p>
+                                                        <div class="div1" style="width: 180px;"><a href="men" style="color: white; font-size: 20px;">Ты что, я мужик!</a></div>
+                                                    {% else %}
+                                                        <p style="color: rgb(255, 255, 255);">Теперь ты в наших кругах, сестра.</p>
+                                                    {% endif %}
+                                                    <p></p>
+                                                    <p style="color: rgb(255, 255, 255);"><a href="delete_log">Выйти</a></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        {% if men %}
+                                            <span style="font-size:30px;cursor:pointer" onclick="openNav()"><img src = "static/img/img_avatar.png " alt = "Аватар" class="shadow-4" style="border-radius: 50%; float: right; width: 70px; margin-right: 10px; margin-top: 1px;"></span>
+                                        {% elif men == None %}
+                                        <span style="font-size:30px;cursor:pointer" onclick="openNav()"><img src = "static/img/img_avatar3.png " alt = "Аватар" class="shadow-4" style="border-radius: 50%; float: right; width: 70px; margin-right: 10px; margin-top: 1px;"></span>
+                                        {% else %}
+                                            <span style="font-size:30px;cursor:pointer" onclick="openNav()"><img src = "static/img/img_avatar2.png " alt = "Аватар" class="shadow-4" style="border-radius: 50%; float: right; width: 70px; margin-right: 10px; margin-top: 1px;"></span>
+                                        {% endif %}
+                                        <script>
+                                        function openNav() {
+                                            document.getElementById("myNav").style.height = "100%";
+                                        }
+                                        
+                                        function closeNav() {
+                                            document.getElementById("myNav").style.height = "0%";
+                                        }
+                                        </script>
+                                    </p>
+                                </td>
+                        
+                                
+                            </tr>
+                            <tr>
+                                <td style="vertical-align:bottom;">
+                                    <p align="center" ><a href="delete_log" id="knopka" style="text-decoration: none;">Выйти</a></p>
+                                </td>
+                            </tr>
+                        </table>
+
+                    </div>
+                {% endif %}
+            </p>
+        </div>
+            <div style="height: 150px;">
+                <ul id="navbar" style="height: 250px;">
+                    {% if flag == False %}
+                        <li><a href="login" class="ali">Войти</a></li>
+                        <li><a href="register" class="ali">Регистрация</a></li>
+                    {% endif %}
+                    {% if flag %}
+                        <li><a href="Lyshee" class="ali">Лучшее</a></li>
+                        <li><a href="Contact" class="ali">Контакты</a></li>
+                        <li><a href="O nas" class="ali">О нас</a></li>
+                        {% if admi %}
+                        <li><a href="Admin" class="ali">админ</a></li>
+                        {% endif %}
+                    {% endif %}
+                </ul>
+                
+            </div>   
+    </div>
+    <div class='imgleft'>
+        <img style="outline: 4px solid rgb(143, 143, 143); box-shadow: 0.3em 0.6em 18px rgba(0, 0, 0, 0.5);" src="static/img/BC4_1490627768.jpg">
+    </div>
+    <div>
+        <h1 style="margin-left: 35%; width: 650px; height: 60px; font-family:Lobster, cursive; Font-size:30px; font-size: 45px;">О принцах и драконах</h1>
+       <div style="margin:0 auto; margin-bottom: 40px; outline: 2px solid rgb(129, 129, 129); width: 1200px; height: 3000px;">
+            <div style="margin: 20px;">
+                <p>
+                    <h3 style="font-size: 25px;">Савельева Валерия Андреевна </h3>
+                    <h3 style="font-family:Lobster, cursive; font-size: 25px;">О принцах и драконах (СИ)</h3>
+                    <p id="p1">– Рашшар, а расскажи сказку, – попросила малышка, преданно глядя на друга. </p>
+                    <p id="p1">– Да что вы, принцесса, я же не знаю ни одной… </p>
+                    <p id="p1">– А вот и нет, мама говорила – много знаешь, – капризно. </p>
+                    <p id="p1">– Ну хорошо, хорошо… – согласился рассказчик. – История эта произошла в небольшом королевстве, ну, примерно таком, как наше… </p>
+
+                    <p id="p1">В одной далёкой стране жил Король. Мудро он правил да подданными был любим. Но только, когда любимая супруга его покинула, задумался Король. Стар ведь он уже, куда такому и дальше на троне сидеть? Надо и на покой уходить.</p>
+                    <p id="p1">А было у Короля четверо детей - три дочери и сын, принц наследный. Вроде бы и есть, кому королевство передать, но как же на покой уходить, когда дети не пристроены?</p>
+                    <p id="p1">Принцессу младшую, Ариину, замуж ещё не выдали, всё ей не то да не то. Ни один жених не нравится! Нос воротит да приговаривает: этот, мол, толстый слишком, а у этого борода до пола, тот - староват, а иной - молодоват.</p>
+                    <p id="p1">А с сыном совсем беда! Разбаловали, наверное, излишне – долгожданный ведь, любимый самый. О подвигах даже и не думает, ему другое подавай – холсты да краски! Художником стать хочет. Вон та же принцесса младшая с ранних лет ратным делом занималась, мечтала войска вести – к счастью войн давно уж не было, а то бы она своего добилась бы, – а Радин, король будущий, о таком и не помышлял.</p>
+
+                    <p id="p1">Но как же трон принцу передать, который даже дракона ни разу не победил? Не дело! Нужно традиции чествовать, а не о глупостях думать. Король-художник – ну надо же!</p>
+                    <p id="p1">Так и решил правитель, что нужно старость себе достойную подготовить: дочку последнюю замуж выдать да сына храбрости поучить, к дракону отправить. А что не хотят – так это не страшно. Король он или нет? Заставит!</p>
+                    <p id="p1">Уже вечером приготовления начались, да для обоих детей сразу. Нужно же дело благое сделать поскорей, чтобы у них всё было, как в нормальном королевстве.</p>
+                    <p id="p1">Младшей дочке свадьба готовилась, князь одного государства соседнего давно руки её просил. И пусть не принц, зато состоявшийся уже, позаботиться сможет, а главное, войн в его краях не предвидится. А то с принцессы станется!</p>
+                    <p id="p1">Сына же, наоборот, к битве готовили, в поход собирали. Дракона, который бы принцессу охранял, конечно же, не нашлось – на таких очередь за несколько десятилетий вперёд, – но принц же этого не знал. Сказали, что будет принцесса, он и поверил, всё равно ведь не интересуется. Хотя и желания особого не проявил, только причитал упорно.</p>
+                    <p id="p1">– Отец, – взмолился Радин, когда его в латы облачить пытались, – зачем всё это? Мы ведь давно уже с сестрой решили, что трон ей достанется!</p>
+                    <p id="p1">От такого заявления Королю совсем плохо стало. Ох эта молодёжь, совсем не понимает, как оно быть-то должно. Верит этим словам заморским красивым, что править и королева может, женщины, дескать, даже умней. Ишь чего за спиной его удумали!</p>
+                    <p id="p1">Так мало принц, и дочка ему вторила:</p>
+                    <p id="p1"> – Батюшка, не нужно так с нами. Сложится всё со временем…</p>
+                    <p id="p1">Но остался Король непреклонен, этим же вечером сына в путь отправил, подвиги совершать, да напутствовал, чтобы домой только с головой драконьей возвращался. Ну, или с клыками – принц-то тоненький, словно девушка, голову и не довезти может.</p>
+                    <p id="p1">А меньше чем через неделю и дочку замуж выдал. Шумно свадьбу отгуляли, весело. Жених, правда, не красавцем оказался, но зато правильным – хорошо с ним принцессе будет.</p>
+
+                    <p id="p1">"Теперь можно и отдохнуть, о старости задуматься, теперь всё наладится", – решил Король.</p>
+                    <p id="p1">Но время шло, и всё меньше радовался Король, один ведь он остался. Дочка, обидевшись, даже не попрощалась, уезжая. А через неделю послание от мужа её законного пришло: сбежала принцесса-то от судьбы нежеланной. Записку лишь отцу и мужу оставила с извинениями. Не хотела жизни себе такой королевская дочь, о подвигах мечтала. Как сквозь землю провалилась – ни слуху, ни духу. Исчезла просто.</p>
+                    <p id="p1">Посетовал Король из-за дочки непослушной, отправил людей искать её да и успокоился – куда денется? Найдётся! Не беда. Вон герой скоро вернётся…</p>
+                    <p id="p1">Но и от сына весточек не было, хотя путь до замка монстра огнедышащего недолгий, давно уж вернуться должен был. Куда только запропастился?</p>
+                    <p id="p1">Так и ждал Король принца домой, даже пир подданным готовить приказал – скоро ведь правитель будущий приедет, герой! Да только иные вести Короля ждали: не вернулся принц из замка драконьего, храбрецом умер, красавицу-принцессу вызолить мечтал.</p>
+                    <p id="p1">Тогда-то и понял правитель, что наделал. Своими руками жизнь детей сгубил! Во благо поступить хотел, думал, правильно всё делает, спокойно решения принимает как настоящий мудрый повелитель.</p>
+                    <p id="p1">Но нельзя самому решать всё за других, если счастья им желаешь…</p>
+
+                    <p id="p1">– Рашшар, но дракон не мог ведь принца убить! – возмутилась принцесса, перебивая рассказчика.</p> 
+                    <p id="p1">– Почему это не мог? Мы что, такие слабые? </p>
+                    <p id="p1">– Вы просто добрые! Не верю, что где-то такие плохие драконы живут. Ты ведь не стал бы есть принца? </p>
+                    <p id="p1">– Не стал бы, – ответил дракон, вздыхая. </p>
+                    <p id="p1">– А значит, Король просто заблуждался, – уверенно. </p>
+                    <p id="p1">– Возможно, принцесса, – тихо-тихо отозвался змей. – Это же сказка, а в каждой такой истории есть доля правды. </p>
+                    <p id="p1">Ведь даже этот дракон когда-то по доброте своей согласился помочь одному хитрому принцу…</p>
+                </p>
+            </div>  
+        </div>
+    </div>
+</body>
+</html>

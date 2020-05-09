@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="static\css.css" href="img" rel='stylesheet' type="text/css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    
+    <title>Lili</title>
+    <style>
+    
+
+    .div_centor_box {
+        box-shadow: 0.2em 0.3em 14px rgba(0, 0, 0, 0.5);
+        outline: 2px solid rgb(92, 170, 216);
+        width: 250px;
+        height: 40px;
+        margin: 0 auto;
+    }
+
+    .form-search {
+        display: inline-block;
+        border-bottom: 1px solid;
+        }
+    .form-search input {
+        all: unset;
+        }
+    ul.hr {
+        margin: 0;
+        padding: 4px;
+        width: 900px;
+        }
+    ul.hr li {
+        display: inline;
+        margin-right: 5px;
+        border: 1px solid #000;
+        padding: 3px;
+        font-size: 20px;
+        margin: 0;
+        padding: 0;
+        list-style-type: none;
+        
+        }
+
+    body {
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 20px;
+    }
+
+    #myBtn {
+          display: none;
+          position: fixed;
+          bottom: 20px;
+          right: 30px;
+          z-index: 99;
+          font-size: 18px;
+          border: none;
+          outline: none;
+          background-color: red;
+          color: white;
+          cursor: pointer;
+          padding: 15px;
+          border-radius: 4px;
+    }
+
+    #myBtn:hover {
+          background-color: #555;
+    }
+    body {
+    font-family: 'Lato', sans-serif;
+    }
+
+    .overlay {
+    height: 0%;
+    width: 100%;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0, 0.9);
+    overflow-y: hidden;
+    transition: 0.5s;
+    }
+
+    .overlay-content {
+    position: relative;
+    top: 25%;
+    width: 100%;
+    text-align: center;
+    margin-top: 30px;
+    outline: 2px solid rgb(255, 251, 251);
+    width: 300px;
+    height: 400px;
+    margin:0 auto;
+    }
+
+    .overlay a {
+    padding: 8px;
+    text-decoration: none;
+    font-size: 36px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+    }
+
+    .overlay a:hover, .overlay a:focus {
+    color: #f1f1f1;
+    }
+
+    .overlay .closebtn {
+    position: absolute;
+    top: 20px;
+    right: 45px;
+    font-size: 60px;
+    }
+
+    @media screen and (max-height: 450px) {
+    .overlay {overflow-y: auto;}
+    .overlay a {font-size: 20px}
+    .overlay .closebtn {
+    font-size: 40px;
+    top: 15px;
+    right: 35px;
+    }
+    }
+    
+    .div1{
+        outline: 2px solid rgb(255, 251, 251);
+        width: 150px;
+        height: 35px;
+        margin:0 auto;
+    }
+
+    .body2 {
+        box-shadow: 0.2em 0.8em 18px rgba(0, 0, 0, 0.5);
+        background: url(my-image.jpg);
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background: radial-gradient(at top, #FEFFFF, #A7CECC);
+        margin:0 auto;
+        margin-left: 300px;
+        margin-right: 300px;
+        margin-bottom: 50px;
+        outline: 2px solid rgb(92, 170, 216);
+    }
+
+    body {
+        background: radial-gradient(40% 50%, #FAECD5, #CAE4D8);
+    }
+
+    .ulleft {
+        box-shadow: 0.2em 0.4em 14px rgba(0, 0, 0, 0.5);
+        float: left;
+        width: 170px;
+        height: 350px;
+        background: radial-gradient(at top, #FEFFFF, #A7CECC);
+        outline: 2px solid rgb(177, 173, 173);
+        margin-left: 40px;
+        margin-top: 10px;
+    }
+
+    .shadow-4:hover {
+    box-shadow:0 0 6px 6px #555; 
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+    }
+
+    .shadow-4 {
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+    }
+
+    
+    .card {
+        box-shadow: 0.2em 0.8em 18px rgba(0, 0, 0, 0.5);
+        max-width: 230px;
+        float: right;
+        text-align: center;
+        font-family: arial;
+        outline: 5px solid rgb(68, 80, 87);
+        margin-right: 20px;
+        margin-top: 20px;
+        }
+
+    .title {
+        color: grey;
+        font-size: 18px;
+        }
+
+    .button1 {
+        border: none;
+        outline: 0;
+        display: inline-block;
+        padding: 8px;
+        color: white;
+        background-color: #000;
+        text-align: center;
+        cursor: pointer;
+        width: 100%;
+        font-size: 18px;
+        }
+
+    .a1 {
+        text-decoration: none;
+        font-size: 22px;
+        color: black;
+        }
+
+    .button1:hover, a:hover {
+        opacity: 0.7;
+    }
+    </style>
+</head>
+<body class="">
+   
+            <div id="header">
+                <h1>
+                    <a href='/' id='atop'>Lili</a>
+                    Книги
+                </h1>
+            </div>
+            <div style="margin-left: 20px; margin-right: 20px;">
+                <table style="border-spacing: 10px;">
+                    <tr>
+                        <td>
+                            <a class="a2" href="zirka_li">
+                                <img id='img' class="shadow-4" style="width: 150px;" src="static/img/BC4_1587470908.jpg">
+                            </a>
+                        </td>
+                        <td>
+                            <a class="a2" href="day_neza">
+                                <img id='img' class="shadow-4" style="width: 135px;" src="static/img/BC4_1587310222.jpg">
+                            </a>
+                        </td>
+                        <td>
+                            <a class="a2" href="elena">
+                                <img id='img' class="shadow-4" style="width: 145px;" src="static/img/BC4_1587493918.jpg">
+                            </a>
+                        </td>
+                        <td>
+                            <a class="a2" href="zerkalo">
+                                <img id='img' class="shadow-4" style="width: 160px;" src="static/img/BC4_1587725254.jpg">
+                            </a>
+                        </td>
+                        <td>
+                            <a class="a2" href="о_принцах_и_драконах">
+                                <img id='img' class="shadow-4" style="width: 160px;" src="static/img/BC4_1490627768.jpg">
+                            </a>
+                        </td>
+                        <td>
+                            <a class="a2" href="Чем_пахнет_луна">
+                                <img id='img' class="shadow-4" style="width: 143px;" src="static/img/BC4_1490793026.jpg">
+                            </a>
+                        </td>
+                        <td>
+                            <a class="a2" href="Как_простить_Драко_Малфоя">
+                                <img id='img' class="shadow-4" style="width: 152px;" src="static/img/сам_издание.jpg">
+                            </a>
+                        </td>
+                    </tr>
+                </table>
+            </div> 
+            <div>
+                <div class="ulleft">
+                    <p>
+                        <ul id="navbar" style="height: 100px;">
+                            {% if flag == False %}
+                                <li><a href="login" class="ali">Войти</a></li>
+                                <li><a href="register" class="ali">Регистрация</a></li>
+                            {% endif %}
+                            {% if flag %}
+                                <li><a href="Lyshee" class="ali">Лучшее</a></li>
+                                <li><a href="Contact" class="ali">Контакты</a></li>
+                                {% if not admi %}
+                                <li><a href="O nas" class="ali">О нас</a></li>
+                                {% endif %}
+                                {% if admi %}
+                                <li><a href="Admin" class="ali">Бд</a></li>
+                                {% endif %}
+                            {% endif %}
+                        </ul>
+                    </p>
+                    <p>
+                        {% if flag %}
+                        <div style="margin-left: 20%;">
+                            <table style="outline: 2px solid rgb(255, 251, 251); width: 100px; height: 100px;">
+                                <tr>
+                                    <td style="border-spacing: 20px; vertical-align:top;" >
+                                        <p align="center" > 
+                                            <div id="myNav" class="overlay">
+                                                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                                                <div class="overlay-content">
+                                                    <div class="">
+                                                        <p> 
+                                                            {% if men %}
+                                                                <span style="font-size:30px;cursor:pointer" onclick="openNav()"><img src = "static/img/img_avatar.png " alt = "Аватар" style="border-radius: 50%; width: 150px;"></span>
+                                                            {% elif men == None %}
+                                                                <span style="font-size:30px;cursor:pointer" onclick="openNav()"><img src = "static/img/img_avatar3.png " alt = "Аватар" style="border-radius: 50%; width: 150px;"></span>
+                                                            {% else %}
+                                                                <span style="font-size:30px;cursor:pointer" onclick="openNav()"><img src = "static/img/img_avatar2.png " alt = "Аватар" style="border-radius: 50%; width: 150px;"></span>
+                                                            {% endif %}
+                                                        </p>
+                                                        {% if men %}
+                                                            <p style="color: rgb(255, 255, 255);">Теперь ты в наших кругах, брат.</p>
+                                                        {% elif men == None %}
+                                                            <p style="color: rgb(255, 255, 255);">Парень или девочка?</p>
+                                                            <div class="div1"><a href="girl" style="color: white; font-size: 20px;">Да, я девочка!</a></div>
+                                                            <p></p>
+                                                            <div class="div1" style="width: 180px;"><a href="men" style="color: white; font-size: 20px;">Ты что, я мужик!</a></div>
+                                                        {% else %}
+                                                            <p style="color: rgb(255, 255, 255);">Теперь ты в наших кругах, сестра.</p>
+                                                        {% endif %}
+                                                        <p></p>
+                                                        <p style="color: rgb(255, 255, 255);"><a href="delete_log">Выйти</a></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            {% if men %}
+                                                <span style="font-size:30px;cursor:pointer" onclick="openNav()"><img src = "static/img/img_avatar.png " alt = "Аватар" class="shadow-4" style="border-radius: 50%; float: right; width: 70px; margin-right: 10px; margin-top: 1px;"></span>
+                                            {% elif men == None %}
+                                            <span style="font-size:30px;cursor:pointer" onclick="openNav()"><img src = "static/img/img_avatar3.png " alt = "Аватар" class="shadow-4" style="border-radius: 50%; float: right; width: 70px; margin-right: 10px; margin-top: 1px;"></span>
+                                            {% else %}
+                                                <span style="font-size:30px;cursor:pointer" onclick="openNav()"><img src = "static/img/img_avatar2.png " alt = "Аватар" class="shadow-4" style="border-radius: 50%; float: right; width: 70px; margin-right: 10px; margin-top: 1px;"></span>
+                                            {% endif %}
+                                            <script>
+                                            function openNav() {
+                                                document.getElementById("myNav").style.height = "100%";
+                                            }
+                                            
+                                            function closeNav() {
+                                                document.getElementById("myNav").style.height = "0%";
+                                            }
+                                            </script>
+                                        </p>
+                                    </td>
+                            
+                                    
+                                </tr>
+                                <tr>
+                                    <td style="vertical-align:bottom;">
+                                        <p align="center" ><a href="delete_log" id="knopka" style="text-decoration: none;">Выйти</a></p>
+                                    </td>
+                                </tr>
+                            </table>
+
+                        </div>
+                        {% endif %}
+                    </p>
+                </div>
+                {% if flag %}
+                    <div class="card">
+                        <img src="static/img/eqnKM8EUa0I.jpg" alt="John" style="width: 100%; outline: 5px solid rgb(68, 80, 87);">
+                        <h1>Гарипов Руслан</h1>
+                        <p>Создатель сей сайта ;)</p>
+                        <div style="margin: 24px 0;">
+                        <a class="a1" href="https://vk.com/id131836293"><i class="fa fa-vk"></i></a>  
+                        </div>
+                        <p><a href="Contact"><button value="Contact" class="button1">Contact</button></p></a>
+                    </div>
+                {% endif %}
+        </div>
+        <div class="body2">
+            <div>
+                <hr style="border: none;  background-color: rgb(121, 229, 236);  color: rgb(121, 229, 236);  height: 3px;  width: auto; ">
+                <div>
+                    <table id="tbos" style="border-spacing: 10px">
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <img id='img' src="static/img/BC4_1587470908.jpg">
+                                </td>
+                                <td>
+                                    <div class="div_centor_box">
+                                        <h2>Зирка Ли (СИ)</h2>
+                                    </div>
+                                    <p><strong>Автор:</strong> Ракитина Ника Дмитриевна</p>
+                                    <p><strong>Жанр:</strong> Фэнтези</p>
+                                    <p><strong>Язык книги:</strong> Русский | Страниц: 1 </p>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div id="Os" style="margin:0 auto;">
+                        <p id="pos">Однажды становишься взрослой. Однажды понимаешь, что отец не вернется из похода с подарками, не подкинет тебя к небу, не усадит перед собой в седло.
+                                    Не щекотнет щеку бородой. А исходящий от него запах кожи, крови и железа — это запах войны.
+                        </p>
+                        <a href="zirka_li" id="knopka">Читать</a>
+                    <hr id="hr">
+                    <p></p>
+                    </div>
+                </div>
+                <div>
+                    <table id="tbos" style="border-spacing: 10px">
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <img id='img' src="static/img/BC4_1587310222.jpg">
+                                </td>
+                                <td>
+                                    <div class="div_centor_box" style="height: 100px;">
+                                        <h2>День независимости</h2>
+                                    </div>
+                                    <p><strong>Автор:</strong> Орехов Василий</p>
+                                    <p><strong>Жанр:</strong> Боевики, остросюжетная литература</p>
+                                    <p><strong>Язык книги:</strong> Русский | Страниц: 1 </p>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div id="Os" style="margin:0 auto;">
+                        <p id="pos">В разгар эпидемии коронавируса Россия послала в США своих военных врачей для борьбы с заразой.
+                                    Однако настоящие американские патриоты уверены, что это коварный коммунистический план по аннексии территории Штатов. И готовят кровавый теракт против захватчиков…
+                        </p>
+                        <a href="day_neza" id="knopka">Читать</a>
+                        <hr id="hr">
+                        <p></p>
+                    </div>
+                </div>
+                <div>
+                    <table id="tbos" style="border-spacing: 10px">
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <img id='img' src="static/img/BC4_1587493918.jpg">
+                                </td>
+                                <td>
+                                    <div class="div_centor_box" style="height: 150px; width: 300px;">
+                                        <h3>В лучшей форме – на карантине.</h3>
+                                        <h3>Самые эффективные тренировки</h3>
+                                    </div>
+                                    <p><strong>Автор:</strong> Санжаровская Елена</p>
+                                    <p><strong>Жанр:</strong> Медицина и здоровье</p>
+                                    <p><strong>Язык книги:</strong> Русский | Страниц: 1 </p>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div id="Os" style="margin:0 auto;">
+                        <p id="pos">Домашняя изоляция и закрытые фитнес-клубы – вовсе не повод жить в обнимку с холодильником и откладывать тренировки «до лучших времен».
+                                    Наоборот, используй это время максимально эффективно и с пользой. Скорректируй питание, составь меню, продумай план тренировок, подготовь инвентарь
+                                    (да-да, он есть в любом доме – достаточно проявить фантазию). И вперед – к твоей лучшей фигуре!
+                        </p>
+                        <a href="elena" id="knopka">Читать</a>
+                        <hr id="hr">
+                        <p></p>
+                    </div>
+                </div>
+                <div>
+                    <table id="tbos" style="border-spacing: 10px">
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <img id='img' src="static/img/BC4_1587725254.jpg">
+                                </td>
+                                <td>
+                                    <div class="div_centor_box">
+                                        <h3>Зеркало (СИ)</h3>
+                                    </div>
+                                    <p><strong>Автор:</strong> Ракитина Ника Дмитриевна</p>
+                                    <p><strong>Жанр:</strong>  Социально-философская фантастика</p>
+                                    <p><strong>Язык книги:</strong> Русский | Страниц: 2 </p>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div id="Os" style="margin:0 auto;">
+                        <p id="pos">
+                            В одном городе объявляют заразными все зеркала…
+                        </p>
+                        <a href="zerkalo" id="knopka">Читать</a>
+                        <hr id="hr">
+                        <p></p>
+                    </div>
+                </div>
+                <div>
+                    <table id="tbos" style="border-spacing: 10px">
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <img id='img' src="static/img/BC4_1490627768.jpg">
+                                </td>
+                                <td>
+                                    <div class="div_centor_box" style="height: 70px;">
+                                        <h3>О принцах и драконах (СИ)</h3>
+                                    </div>
+                                    <p><strong>Автор:</strong> Савельева Валерия Андреевна </p>
+                                    <p><strong>Жанр:</strong>   Фэнтези, Сказки, Современная проза</p>
+                                    <p><strong>Язык книги:</strong> Русский | Страниц: 1 </p>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div id="Os" style="margin:0 auto;">
+                        <a href="о_принцах_и_драконах" id="knopka">Читать</a>
+                        <hr id="hr">
+                        <p></p>
+                    </div>
+                </div>
+                <div>
+                    <table id="tbos" style="border-spacing: 10px">
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <img id='img' src="static/img/BC4_1490793026.jpg">
+                                </td>
+                                <td>
+                                    <div class="div_centor_box" style="height: 30px;">
+                                        <h3>Чем пахнет луна</h3>
+                                    </div>
+                                    <p><strong>Автор:</strong> Ракитина Ника Дмитриевна </p>
+                                    <p><strong>Жанр:</strong>   Юмористическая фантастика </p>
+                                    <p><strong>Язык книги:</strong> Русский | Страниц: 2 </p>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div id="Os" style="margin:0 auto;">
+                        <p id="pos">
+                            Работница аптеки Вика отправилась в новый диагностический центр, открывшийся недалеко от места ее работы.
+                            Диагност Гавриил Аркадьевич проводит обследование уникальным способом — обнюхивая пациентов. Чем же объясняются такие странности?  
+                        </p>
+                        <a href="Чем_пахнет_луна" id="knopka">Читать</a>
+                        <hr id="hr">
+                        <p></p>
+                    </div>
+                </div>
+                <div>
+                    <table id="tbos" style="border-spacing: 10px">
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <img id='img' src="static/img/сам_издание.jpg">
+                                </td>
+                                <td>
+                                    <div class="div_centor_box" style="height: 70px;">
+                                        <h3>Как простить Драко Малфоя (СИ)</h3>
+                                    </div>
+                                    <p><strong>Автор:</strong> "Specialhero" </p>
+                                    <p><strong>Жанр:</strong>   Короткие любовные романы </p>
+                                    <p><strong>Язык книги:</strong> Русский | Страниц: 2 </p>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div id="Os" style="margin:0 auto;">
+                        <p id="pos">
+                            Как сообщить друзьям об одном из самых главных событий в твоей жизни - помолвке, если ты собираешься замуж за школьного врага?
+                             Как заставить друзей простить Драко Малфоя? Разговор у камина по душам должен помочь.   
+                        </p>
+                        <a href="Как_простить_Драко_Малфоя" id="knopka">Читать</a>
+                        <hr id="hr">
+                        <p></p>
+                    </div>
+                </div>
+                    <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+                    <script>
+                    window.onscroll = function() {scrollFunction()};
+
+                    function scrollFunction() {
+                        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                            document.getElementById("myBtn").style.display = "block";
+                        } else {
+                            document.getElementById("myBtn").style.display = "none";
+                        }
+                    }
+                    function topFunction() {
+                        document.body.scrollTop = 0;
+                        document.documentElement.scrollTop = 0;
+                    }
+                    </script>
+            </div>
+        </div>
+</body>
+        <div id="header" style="position:relative; padding-bottom:50px; height: 40px; width: 100%;">
+            <h1>
+                <a href='/' id='atop'>Lili</a>
+                Книги
+            </h1>
+        </div>
+
+</html>

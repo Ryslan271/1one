@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="static\css.css" href="Osnova" rel='stylesheet' type="text/css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    
+    <title>Lili</title>
+    <style>
+    .shadow-4:hover {
+        box-shadow:0 0 6px 6px #555; 
+        -webkit-transition: all 0.5s ease;
+        -moz-transition: all 0.5s ease;
+        transition: all 0.5s ease;
+    }
+
+    .shadow-4 {
+        -webkit-transition: all 0.5s ease;
+        -moz-transition: all 0.5s ease;
+        transition: all 0.5s ease;
+    }
+    
+    #p1 {
+        font-size: 25px;
+    }
+
+    .flip-card {
+        background-color: transparent;
+        width: 300px;
+        height: 300px;
+        border: 10px solid #0808085b;
+        perspective: 1000px; 
+      }
+      
+      .flip-card-inner {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        text-align: center;
+        transition: transform 0.8s;
+        transform-style: preserve-3d;
+      }
+      
+      .flip-card:hover .flip-card-inner {
+        transform: rotateY(180deg);
+      }
+      
+      .flip-card-front, .flip-card-back {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
+      }
+      
+      .flip-card-front {
+        background-color: #bbb;
+        color: black;
+      }
+      
+      .flip-card-back {
+        background-color: dodgerblue;
+        color: white;
+        transform: rotateY(180deg);
+      }
+
+      body {
+      font-family: 'Lato', sans-serif;
+      }
+
+      .overlay {
+      height: 0%;
+      width: 100%;
+      position: fixed;
+      z-index: 1;
+      top: 0;
+      left: 0;
+      background-color: rgb(0,0,0);
+      background-color: rgba(0,0,0, 0.9);
+      overflow-y: hidden;
+      transition: 0.5s;
+      }
+
+      .overlay-content {
+      position: relative;
+      top: 25%;
+      width: 100%;
+      text-align: center;
+      margin-top: 30px;
+      outline: 2px solid rgb(255, 251, 251);
+      width: 300px;
+      height: 400px;
+      margin:0 auto;
+      }
+
+      .overlay a {
+      padding: 8px;
+      text-decoration: none;
+      font-size: 36px;
+      color: #818181;
+      display: block;
+      transition: 0.3s;
+      }
+
+      .overlay a:hover, .overlay a:focus {
+      color: #f1f1f1;
+      }
+
+      .overlay .closebtn {
+      position: absolute;
+      top: 20px;
+      right: 45px;
+      font-size: 60px;
+      }
+
+      @media screen and (max-height: 450px) {
+      .overlay {overflow-y: auto;}
+      .overlay a {font-size: 20px}
+      .overlay .closebtn {
+      font-size: 40px;
+      top: 15px;
+      right: 35px;
+      }
+      }
+      
+      .div1{
+          outline: 2px solid rgb(255, 251, 251);
+          width: 150px;
+          height: 35px;
+          margin:0 auto;
+      }
+
+      .body2 {
+          background: url(my-image.jpg);
+          background-size: 100% 100%;
+          background-repeat: no-repeat;
+          background-attachment: fixed;
+          background: linear-gradient(90deg, #b9deed, #efefef);
+      }
+
+      .imgleft {
+          float: left;
+          margin-left: 20px;
+      }
+    </style>
+</head>
+<body class="body2">
+        <div id="header">
+            <h1>
+                <a href='/' id='atop'>Lili</a>
+                ЗИРКА ЛИ
+            </h1>
+        </div>
+        <div class="">
+            <p>
+                {% if flag %}
+                    <div>
+                        <table style="outline: 2px solid rgb(160, 157, 157); width: 100px; height: 100px; float: right; box-shadow: 0.2em 0.2em 14px rgba(0, 0, 0, 0.5); margin-right: 10px;">
+                            <tr>
+                                <td style="border-spacing: 20px; vertical-align:top;" >
+                                    <p align="center" > 
+                                        <div id="myNav" class="overlay">
+                                            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                                            <div class="overlay-content">
+                                                <div class="">
+                                                    <p> 
+                                                        {% if men %}
+                                                            <span style="font-size:30px;cursor:pointer" onclick="openNav()"><img src = "static/img/img_avatar.png " alt = "Аватар" style="border-radius: 50%; width: 150px;"></span>
+                                                        {% elif men == None %}
+                                                            <span style="font-size:30px;cursor:pointer" onclick="openNav()"><img src = "static/img/img_avatar3.png " alt = "Аватар" style="border-radius: 50%; width: 150px;"></span>
+                                                        {% else %}
+                                                            <span style="font-size:30px;cursor:pointer" onclick="openNav()"><img src = "static/img/img_avatar2.png " alt = "Аватар" style="border-radius: 50%; width: 150px;"></span>
+                                                        {% endif %}
+                                                    </p>
+                                                    {% if men %}
+                                                        <p style="color: rgb(255, 255, 255);">Теперь ты в наших кругах, брат.</p>
+                                                    {% elif men == None %}
+                                                        <p style="color: rgb(255, 255, 255);">Парень или девочка?</p>
+                                                        <div class="div1"><a href="girl" style="color: white; font-size: 20px;">Да, я девочка!</a></div>
+                                                        <p></p>
+                                                        <div class="div1" style="width: 180px;"><a href="men" style="color: white; font-size: 20px;">Ты что, я мужик!</a></div>
+                                                    {% else %}
+                                                        <p style="color: rgb(255, 255, 255);">Теперь ты в наших кругах, сестра.</p>
+                                                    {% endif %}
+                                                    <p></p>
+                                                    <p style="color: rgb(255, 255, 255);"><a href="delete_log">Выйти</a></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        {% if men %}
+                                            <span style="font-size:30px;cursor:pointer" onclick="openNav()"><img src = "static/img/img_avatar.png " alt = "Аватар" class="shadow-4" style="border-radius: 50%; float: right; width: 70px; margin-right: 10px; margin-top: 1px;"></span>
+                                        {% elif men == None %}
+                                        <span style="font-size:30px;cursor:pointer" onclick="openNav()"><img src = "static/img/img_avatar3.png " alt = "Аватар" class="shadow-4" style="border-radius: 50%; float: right; width: 70px; margin-right: 10px; margin-top: 1px;"></span>
+                                        {% else %}
+                                            <span style="font-size:30px;cursor:pointer" onclick="openNav()"><img src = "static/img/img_avatar2.png " alt = "Аватар" class="shadow-4" style="border-radius: 50%; float: right; width: 70px; margin-right: 10px; margin-top: 1px;"></span>
+                                        {% endif %}
+                                        <script>
+                                        function openNav() {
+                                            document.getElementById("myNav").style.height = "100%";
+                                        }
+                                        
+                                        function closeNav() {
+                                            document.getElementById("myNav").style.height = "0%";
+                                        }
+                                        </script>
+                                    </p>
+                                </td>
+                        
+                                
+                            </tr>
+                            <tr>
+                                <td style="vertical-align:bottom;">
+                                    <p align="center" ><a href="delete_log" id="knopka" style="text-decoration: none;">Выйти</a></p>
+                                </td>
+                            </tr>
+                        </table>
+
+                    </div>
+                {% endif %}
+            </p>
+        </div>
+            <div style="height: 150px;">
+                <ul id="navbar" style="height: 250px;">
+                    {% if flag == False %}
+                        <li><a href="login" class="ali">Войти</a></li>
+                        <li><a href="register" class="ali">Регистрация</a></li>
+                    {% endif %}
+                    {% if flag %}
+                        <li><a href="Lyshee" class="ali">Лучшее</a></li>
+                        <li><a href="Contact" class="ali">Контакты</a></li>
+                        <li><a href="O nas" class="ali">О нас</a></li>
+                        {% if admi %}
+                        <li><a href="Admin" class="ali">админ</a></li>
+                        {% endif %}
+                    {% endif %}
+                </ul>
+                
+            </div>   
+    </div>
+    <div class='imgleft'>
+        <img style="outline: 4px solid rgb(143, 143, 143); box-shadow: 0.3em 0.6em 18px rgba(0, 0, 0, 0.5);" src="static/img/BC4_1587470908.jpg">
+    </div>
+    <div>
+        <h1 style="margin-left: 43%; width: 350px; height: 60px; font-family:Lobster, cursive; Font-size:30px; font-size: 45px;">Зирка Ли (СИ)</h1>
+       <div style="margin:0 auto; margin-bottom: 40px; outline: 2px solid rgb(129, 129, 129); width: 1200px; height: 2850px;">
+            <div style="margin: 20px;">
+                <p>
+                    <h3 style="font-size: 25px;">Ника Ракитина</h3>
+                    <h3 style="font-family:Lobster, cursive; font-size: 25px;">ЗИРКА ЛИ</h3>
+                    <p id="p1">Однажды становишься взрослой. Однажды понимаешь, что отец не вернется из похода с подарками, не подкинет тебя к небу, не усадит перед собой в седло. Не щекотнет щеку бородой. А исходящий от него запах кожи, крови и железа — это запах войны. Которая пришла со всех сторон. И в горном замке, куда тебя услали, не получится отсидеться. Да и услали не потому, что ты принцесса, а потому что осажденной столице не нужны лишние рты и слабые руки.</p>
+                    <p id="p1">И засыпая в сырой постели на верху башни, ты изо всех сил прислушиваешься, не скрипнут ли воротные цепи. Не застучат ли подковы по брусчатке тесного внутреннего двора. И кто явится — друг или враг?</p>
+                    <p id="p1">Приехали брат и незнакомая тетка. Брат привез письмо от отца. Вернее, приказ. Отец выдавал меня замуж. За того, кто осадил наши земли и почти уже взял столицу. А отец и брат хоть что-то хотели оставить за собой. И расплачивались мной, ненаследной принцессой Зиркалии. В свите брата врагов и наших было напополам. А тетка осматривала меня в уединенной комнате: зубы и другие места. Осматривала грубо, вертела туда и сюда, фыркала, точно лошадь-доходягу покупала вместо породистого жеребца. Я бы ее укусила, но уж больно с намеком зыркал на меня из-под густых бровей брат, с ней отпуская. А еще с лошади он слезал, как старик, и заметно хромал. И потому я не стала ни кусать ее, ни отвешивать пощечины, ни хлестать словами. Хотя все это умела, и последнее лучше всего. Отец вообще воспитал меня как дикарку, а не как принцессу. Говорил, пригодится. И пригодится: в доме мужа всегда приходится за себя стоять.</p>
+                    
+                    <p id="p1">А до встречи с женихом оставалось три дня. И мне донельзя хотелось оттянуть эту встречу. Но даже долгий путь когда-нибудь кончается.</p>
+                    
+                    <p id="p1">Я въезжала в столицу, не поднимая глаз. Не хотелось смотреть на руины, на ветки деревьев, поднятые к небу в немой мольбе. Обгорелые бревна, мешки с песком, обломки камня оттащили, освободив дорогу. Кое-где над развалинами еще вился дым, и я старательно закрывала нос и рот платком. А в замке уже готовились к свадьбе. Наспех — настоящая свадьба должна была состояться на родине жениха. И из своих туда со мной не брали никого. Я выслушала это с каменным спокойствием, опуская глаза, стараясь не плакать. Рано или поздно такое происходит со всеми принцессами — когда надо расцепить объятия, вырвать корни, уехать за мужем и разделить с ним ложе, веру, политику. Брат сказал, что я бесчувственная, отец проворчал, чтобы он меня не трогал. Служанки тихо хлюпали носами, собирая мне пожитки. А я стояла на ветру. Маленький сад был неприютным и голым. Дождь капал и моросил, капли лениво ползли по тронутым лишайником стволам старых яблонь. А потом я ощутила внезапный холод и услыхала шаги.
+                        Уверенные. Повернула голову и посмотрела на жениха в упор, а не из-под ресниц, как положено принцессе. Он был обыкновенным. Как отец, только без бороды и лет на двадцать моложе. И волосы не короткие, под шлем, а длинные, черные, разметанные по плечам. Их удерживал обыкновенный серебряный обруч. Как-то слишком скромно для короля.</p>
+                    
+                    <p id="p1">А жених шагнул ко мне и приподнял мое лицо холодными пальцами за подбородок. Заглянул в глаза. Не улыбаясь. Глаза у него были серые, ледяные. И губы узкие. Не то чтобы он был нехорош собой, просто от его присутствия и взгляда словно горсть колючек просыпалась за шиворот. Но я не опускала взгляд.</p>
+                    <p id="p1">Он коротко кивнул, не разжимая губ. И ушел.</p>
+                    <p id="p1">А в полночь мы уже стояли у алтаря. Обряд тянется долго, а на рассвете мы должны были уехать. Не знаю, куда жених так торопился, ведь нас он уже завоевал.</p>
+                    <p id="p1">Сквозь ледяные ветра ехали мы, по туманным ущельям ехали мы. А во мне все звучали короткие слова, сказанные им при обряде:</p>
+                    <p id="p1">— Будешь носить это, не снимая.</p>
+                    <p id="p1">И мои виски сдавила корона: такая же простая, как у него. Надетая им собственноручно. Не браслет с ключами, не перстень, как в обычае у нас. Обруч вокруг головы. Я возненавидела его сразу, но терпела. Понимала, что начни сопротивляться: будет худо всем. И отцу, и брату, и моему народу, от которого и так осталось немного.</p>
+                    <p id="p1">Мы торопились, загоняли коней, меняли на новых, у меня на заду, должно быть, появились мозоли от седла. Но муж и не думал остановиться. Хорошо, что и женой меня сделать не думал, пока. Устами той же тетки, что забрала меня из горного пристанища, сулил впереди райский сад и медовые ночи. А может, она нарочно лгала. Мне было жутко, но вопросов я не задавала. Хотя и знала, что скоро уже приедем.</p>
+                    <p id="p1">Дорога пошла под уклон, и я увидела внизу столицу мужнина королевства. Деревья, башенки с острыми шпилями, позеленевшие от мха крыши. Серебряную морось на поверхностях. И ощутила запах близкого моря. Но пока приехали во дворец, наступила ночь. Муж снял меня, сонную, с коня, и понес на руках через полосы мрака и света от кованых фонарей. Вдалеке ржали лошади, переговаривались слуги, топотала охрана. Но я не чувствовала ничего, кроме тяжести короны на голове, плавно проваливаясь в сон. Чтобы очнуться среди ночи, потому что заполошно стучало в груди сердце и руки и лоб были мокрыми, словно их оросило дождем.</p>
+                    
+                    <p id="p1">Муж спал рядом. Дыша почти беззвучно. Впервые я была возле него в постели, не окруженная слугами, предоставленная самой себе. Я встала и на цыпочках пробежала до прикрытого кисеей наклонного зеркала, чтобы взглянуть на себя в шелковой ночной рубашке, с распущенными волосами. На столике у зеркала пылала, подмигивая, одинокая свечка. Я взяла ее и стала обходить опочивальню, отмечая ее мрачную роскошь: лиловую обивку стен, чуть поблескивающий балдахин, массивные лапы, на которых покоилась постель. Потом отставила свечу и, пользуясь, что никто не видит, стянула с себя корону. Как наваждение. Кругом было темно, тесно и пыльно. Не было ни шпалер, ни балдахина, а муж… скелет в короне вытянулся в гробу, из которого я только что вылезла. Я — из чужого гроба. Я успела подхватить ледяной обруч у самого пола и надела на голову.</p>
+                    <p id="p1">Вот балдахин, кровать, вот роскошный покой и мужчина, который возьмет меня не только по закону.</p>
+                    <p id="p1">Я сняла обруч — снова склеп и разверстый гроб. Нашу Зиркалию захватил мертвец. Я силилась и никак не могла заплакать. Я даже не знаю, скажу ли мужу, что мне известна его тайна. Я не просто глупая девочка, я принцесса, и должна обдумывать каждый свой шаг. Когда-нибудь потом, когда я узнаю больше, я попытаюсь сделать что-нибудь с этим своим знанием. А пока… а пока я поняла, что стала взрослой. И снова надела корону, на этот раз добровольно и навсегда.</p>
+                </p>
+            </div>  
+        </div>
+    </div>
+</body>
+</html>

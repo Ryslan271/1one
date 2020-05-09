@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="static\css.css" href="Osnova" rel='stylesheet' type="text/css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    
+    <title>Lili</title>
+    <style>
+    #p1 {
+        font-size: 25px;
+    }
+
+    .flip-card {
+        background-color: transparent;
+        width: 300px;
+        height: 300px;
+        border: 10px solid #0808085b;
+        perspective: 1000px; 
+      }
+      
+      .flip-card-inner {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        text-align: center;
+        transition: transform 0.8s;
+        transform-style: preserve-3d;
+      }
+      
+      .flip-card:hover .flip-card-inner {
+        transform: rotateY(180deg);
+      }
+      
+      .flip-card-front, .flip-card-back {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
+      }
+      
+      .flip-card-front {
+        background-color: #bbb;
+        color: black;
+      }
+      
+      .flip-card-back {
+        background-color: dodgerblue;
+        color: white;
+        transform: rotateY(180deg);
+      }
+
+      body {
+      font-family: 'Lato', sans-serif;
+      }
+
+      .overlay {
+      height: 0%;
+      width: 100%;
+      position: fixed;
+      z-index: 1;
+      top: 0;
+      left: 0;
+      background-color: rgb(0,0,0);
+      background-color: rgba(0,0,0, 0.9);
+      overflow-y: hidden;
+      transition: 0.5s;
+      }
+
+      .overlay-content {
+      position: relative;
+      top: 25%;
+      width: 100%;
+      text-align: center;
+      margin-top: 30px;
+      outline: 2px solid rgb(255, 251, 251);
+      width: 300px;
+      height: 400px;
+      margin:0 auto;
+      }
+
+      .overlay a {
+      padding: 8px;
+      text-decoration: none;
+      font-size: 36px;
+      color: #818181;
+      display: block;
+      transition: 0.3s;
+      }
+
+      .overlay a:hover, .overlay a:focus {
+      color: #f1f1f1;
+      }
+
+      .overlay .closebtn {
+      position: absolute;
+      top: 20px;
+      right: 45px;
+      font-size: 60px;
+      }
+
+      @media screen and (max-height: 450px) {
+      .overlay {overflow-y: auto;}
+      .overlay a {font-size: 20px}
+      .overlay .closebtn {
+      font-size: 40px;
+      top: 15px;
+      right: 35px;
+      }
+      }
+      
+      .div1{
+          outline: 2px solid rgb(255, 251, 251);
+          width: 150px;
+          height: 35px;
+          margin:0 auto;
+      }
+
+      .body2 {
+          background: url(my-image.jpg);
+          background-size: 100% 100%;
+          background-repeat: no-repeat;
+          background-attachment: fixed;
+          background: linear-gradient(90deg, #b9deed, #efefef);
+      }
+
+      .imgleft {
+          float: left;
+          margin-left: 20px;
+      }
+
+      .shadow-4:hover {
+        box-shadow:0 0 6px 6px #555; 
+        -webkit-transition: all 0.5s ease;
+        -moz-transition: all 0.5s ease;
+        transition: all 0.5s ease;
+        }
+
+        .shadow-4 {
+        -webkit-transition: all 0.5s ease;
+        -moz-transition: all 0.5s ease;
+        transition: all 0.5s ease;
+        }
+    </style>
+</head>
+<body class="body2">
+        <div id="header">
+            <h1>
+                <a href='/' id='atop'>Lili</a>
+                День независимости
+            </h1>
+        </div>
+        <div class="">
+            <p>
+                {% if flag %}
+                    <div>
+                        <table style="outline: 2px solid rgb(160, 157, 157); width: 100px; height: 100px; float: right; box-shadow: 0.2em 0.2em 14px rgba(0, 0, 0, 0.5); margin-right: 10px;">
+                            <tr>
+                                <td style="border-spacing: 20px; vertical-align:top;" >
+                                    <p align="center" > 
+                                        <div id="myNav" class="overlay">
+                                            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                                            <div class="overlay-content">
+                                                <div class="">
+                                                    <p> 
+                                                        {% if men %}
+                                                            <span style="font-size:30px;cursor:pointer" onclick="openNav()"><img src = "static/img/img_avatar.png " alt = "Аватар" style="border-radius: 50%; width: 150px;"></span>
+                                                        {% elif men == None %}
+                                                            <span style="font-size:30px;cursor:pointer" onclick="openNav()"><img src = "static/img/img_avatar3.png " alt = "Аватар" style="border-radius: 50%; width: 150px;"></span>
+                                                        {% else %}
+                                                            <span style="font-size:30px;cursor:pointer" onclick="openNav()"><img src = "static/img/img_avatar2.png " alt = "Аватар" style="border-radius: 50%; width: 150px;"></span>
+                                                        {% endif %}
+                                                    </p>
+                                                    {% if men %}
+                                                        <p style="color: rgb(255, 255, 255);">Теперь ты в наших кругах, брат.</p>
+                                                    {% elif men == None %}
+                                                        <p style="color: rgb(255, 255, 255);">Парень или девочка?</p>
+                                                        <div class="div1"><a href="girl" style="color: white; font-size: 20px;">Да, я девочка!</a></div>
+                                                        <p></p>
+                                                        <div class="div1" style="width: 180px;"><a href="men" style="color: white; font-size: 20px;">Ты что, я мужик!</a></div>
+                                                    {% else %}
+                                                        <p style="color: rgb(255, 255, 255);">Теперь ты в наших кругах, сестра.</p>
+                                                    {% endif %}
+                                                    <p></p>
+                                                    <p style="color: rgb(255, 255, 255);"><a href="delete_log">Выйти</a></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        {% if men %}
+                                            <span style="font-size:30px;cursor:pointer" onclick="openNav()"><img src = "static/img/img_avatar.png " alt = "Аватар" class="shadow-4" style="border-radius: 50%; float: right; width: 70px; margin-right: 10px; margin-top: 1px;"></span>
+                                        {% elif men == None %}
+                                        <span style="font-size:30px;cursor:pointer" onclick="openNav()"><img src = "static/img/img_avatar3.png " alt = "Аватар" class="shadow-4" style="border-radius: 50%; float: right; width: 70px; margin-right: 10px; margin-top: 1px;"></span>
+                                        {% else %}
+                                            <span style="font-size:30px;cursor:pointer" onclick="openNav()"><img src = "static/img/img_avatar2.png " alt = "Аватар" class="shadow-4" style="border-radius: 50%; float: right; width: 70px; margin-right: 10px; margin-top: 1px;"></span>
+                                        {% endif %}
+                                        <script>
+                                        function openNav() {
+                                            document.getElementById("myNav").style.height = "100%";
+                                        }
+                                        
+                                        function closeNav() {
+                                            document.getElementById("myNav").style.height = "0%";
+                                        }
+                                        </script>
+                                    </p>
+                                </td>
+                        
+                                
+                            </tr>
+                            <tr>
+                                <td style="vertical-align:bottom;">
+                                    <p align="center" ><a href="delete_log" id="knopka" style="text-decoration: none;">Выйти</a></p>
+                                </td>
+                            </tr>
+                        </table>
+
+                    </div>
+                {% endif %}
+            </p>
+        </div>
+            <div style="height: 150px;">
+                <ul id="navbar" style="height: 250px;">
+                    {% if flag == False %}
+                        <li><a href="login" class="ali">Войти</a></li>
+                        <li><a href="register" class="ali">Регистрация</a></li>
+                    {% endif %}
+                    {% if flag %}
+                        <li><a href="Lyshee" class="ali">Лучшее</a></li>
+                        <li><a href="Contact" class="ali">Контакты</a></li>
+                        <li><a href="O nas" class="ali">О нас</a></li>
+                        {% if admi %}
+                        <li><a href="Admin" class="ali">админ</a></li>
+                        {% endif %}
+                    {% endif %}
+                </ul>
+                
+            </div>   
+    </div>
+    <div class='imgleft'>
+        <img style="outline: 4px solid rgb(143, 143, 143); box-shadow: 0.3em 0.6em 18px rgba(0, 0, 0, 0.5);" src="static/img/BC4_1587310222.jpg">
+    </div>
+    <div>
+        <h1 style="margin-left: 36%; width: 550px; height: 60px; font-family:Lobster, cursive; Font-size:45px;">День независимости</h1>
+       <div style="margin:0 auto; margin-bottom: 40px; outline: 2px solid rgb(129, 129, 129); width: 1200px; height: 2100px;">
+            <div style="margin: 20px;">
+                <p>
+                    <h3  id="p1">Василий Орехов</h3>
+                    <h3 style="font-family:Lobster, cursive; font-size: 25px;">День независимости</h3>
+                    <p id="p1">Разговоры на операции были обычными.</p>
+                    <p id="p1">– Познакомилса тут с одним девчонком… – Бифф демонстративно сплюнул. – Ничего себе так девчонко, грудастенькое. Мне нравки.</p>
+                    <p id="p1">– А с попой, с попой как у неё? – живо заинтересовался Джо Хилл.</p>
+                    <p id="p1">– Ну, такое, – Таннен неопределённо развёл руками. – Крепенькие бугорки. Вполне годно.</p>
+                    <p id="p1">Чарли Мэнсон недовольно покосился в сторону Биффа Таннена, невозмутимо разглагольствовавшего без отрыва от наблюдений из своего окна. Могучий Халк, определённо, но столь же полный идиот. С гарантией проваливает любое доверенное дело. Скажем, однажды Команданте поручил ему самое простое – организовать сбор пустых бутылок на свалке, чтобы изготовить коктейлей Молотова для атаки на русские бронетранспортёры. Атака в итоге сорвалась, потому что этот раздолбай набрал пластиковой тары. Ему даже в голову не пришло, что для того, чтобы горючая жидкость имела максимальную площадь растекания, бутылка после броска должна разбиться.</p>
+                    <p id="p1">Впрочем, школьная физика никогда не была в чести у чёрных. Равно как математика, английский и литература.</p>
+                    <p id="p1">Вот и в этот раз Бифф первым делом вылил половину купленной в засаду бутылки колы в строительный мусор на этаже, а на оставшееся место добавил из своей фляги.</p>
+                    <p id="p1">– Ром с колой, – авторитетно пояснил Таннен. – Первейшее дело. Можно виски, – добавил он после некоторых мучительных размышлений.</p>
+                    <p id="p1">Они втроём залегли на одном из полуразрушенных этажей One Times Square, пустующего здания в самом центре Манхэттена, из которого в девяностые годы прошлого века сделали огромный рекламный щит. На крышу здания каждый год опускался Новогодний шар, а из окон верхних этажей студенты и мигранты за небольшую плату разбрасывали серпантин и конфетти, создавая праздничное настроение у гуляющих толп – Чарли сам участвовал пару раз в таком разбрасывании, когда ему позарез нужны были карманные деньги. Собственно, именно потому он и предложил сегодняшнюю смелую акцию – потому что примерно представлял, как пробраться на этажи One Times Square, и знал, как тут всё устроено.</p>
+                    <p id="p1">Теперь из этих окон должны были полететь не серпантины, а зажигательные бомбы – точно на головы гнусным оккупантам и тем коллаборационистам, которые готовы принимать участие в их кровожадном параде.</p>
+                    <p id="p1">Чарли ни минуты не сомневался, что это билет в один конец – здание тут же оцепят и прочешут патрули в будёновках со звёздами, как в комиксах. Сбежать с верхних этажей небоскрёба абсолютно невозможно, если только ты не Джеймс Бонд. Но после того, как красные столько времени топтали своими грубыми сапогами священную демократию, Мэнсону уже было всё равно. И остальным участникам акции, наверное, тоже. Ну, может быть, исключая Биффа Таннена, который запросто мог и не осознавать всей серьёзности ситуации, до сих пор рассчитывая исчезнуть вместе со всеми по окончании операции, как обычно.</p>
+                    <p id="p1">Впрочем, история показывает, что именно такие туповатые, но атлетические ребята, вроде Муция Сцеволы, обычно становятся настоящими героями нации, первыми спрыгивая в пену прибоя с борта десантного корабля и устанавливая американский флаг на вражеском берегу. Или молча выдерживая неимоверные пытки в концлагере диктатора – погибая один за другим, но не сдавая тайную организацию сопротивления. А вот умные парнишки вроде Мэнсона создают “Майкрософт”, снимают “Челюсти”, записывают “Клуб одиноких сердец сержанта Пеппера” или пишут “Властелин колец”, но редко становятся настоящими патриотами свободы. Или вон тот же вежливый очкарик Джо Хилл – Чарли нисколько не удивился бы, узнав через десяток лет, что он снял новое “Паранормальное явление” или там написал новое “Сияние”. Но представить его в качестве героя демократии, смело противостоящего серьёзному врагу, было совершенно невозможно.</p>
+
+                    <p id="p1">А враг, с которым боролись ребята Команданте, был предельно серьёзным.</p>
+                    <p id="p1">Русские твари.</p>
+                    <p id="p1">Это было примерно как в том старом фильме “Красный рассвет”, где краснопузые десантируются на побережье Америки и сходу расстреливают школу. Не оборудуют плацдарм, нет, не подавляют огнём местных военных, не сбивают воздушные цели противоположной стороны, как сделали бы любые нормальные солдаты любой нормальной армии вроде израильской – просто злобно расстреливают из “Калашниковых” мирную американскую школу, как это свойственно тупым восточным варварам и прочим тоталитарным ублюдкам.</p>
+                </p>
+            </div>  
+        </div>
+    </div>
+</body>
+</html>

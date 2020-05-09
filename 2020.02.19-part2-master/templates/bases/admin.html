@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="static\css.css" href="Osnova" rel='stylesheet' type="text/css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    
+    <title>Lili</title>
+<style>
+    .body2 {
+        background: url(my-image.jpg);
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background: linear-gradient(90deg, #cfecd0, #a0cea7, #9ec0db);
+    }
+
+    body {
+    font-family: 'Lato', sans-serif;
+    }
+
+    .overlay {
+    height: 0%;
+    width: 100%;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0, 0.9);
+    overflow-y: hidden;
+    transition: 0.5s;
+    }
+
+    .overlay-content {
+    position: relative;
+    top: 25%;
+    width: 100%;
+    text-align: center;
+    margin-top: 30px;
+    outline: 2px solid rgb(255, 251, 251);
+    width: 300px;
+    height: 400px;
+    margin:0 auto;
+    }
+
+    .overlay a {
+    padding: 8px;
+    text-decoration: none;
+    font-size: 36px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+    }
+
+    .overlay a:hover, .overlay a:focus {
+    color: #f1f1f1;
+    }
+
+    .overlay .closebtn {
+    position: absolute;
+    top: 20px;
+    right: 45px;
+    font-size: 60px;
+    }
+
+    @media screen and (max-height: 450px) {
+    .overlay {overflow-y: auto;}
+    .overlay a {font-size: 20px}
+    .overlay .closebtn {
+    font-size: 40px;
+    top: 15px;
+    right: 35px;
+    }
+    }
+    
+    .div1{
+        outline: 2px solid rgb(255, 251, 251);
+        width: 150px;
+        height: 35px;
+        margin:0 auto;
+    }
+
+    .body2 {
+        background: url(my-image.jpg);
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background: linear-gradient(90deg, #cfecd0, #a0cea7, #9ec0db);
+    }
+    
+    .shadow-4:hover {
+    box-shadow:0 0 6px 6px #555; 
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+    }
+
+    .shadow-4 {
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+    }   
+
+    .title {
+        color: grey;
+        font-size: 18px;
+        }
+
+    .button1 {
+        border: none;
+        outline: 0;
+        display: inline-block;
+        padding: 8px;
+        color: white;
+        background-color: #000;
+        text-align: center;
+        cursor: pointer;
+        width: 100%;
+        font-size: 18px;
+        }
+
+    .a1 {
+        text-decoration: none;
+        font-size: 22px;
+        color: black;
+        }
+
+    .button1:hover, a:hover {
+        opacity: 0.7;
+        }
+    p {
+        color: black;
+    }
+    </style>
+</head>
+<body class="body2">
+        <div id="header">
+            <h1>
+                <a href='/' id='atop'>Lili</a>
+                О нас
+            </h1>
+        </div>
+        <div style="margin-right: 20px;">
+            <p>
+                {% if flag %}
+                    <div>
+                        <table style="outline: 2px solid rgb(255, 251, 251); width: 100px; height: 100px; float: right; box-shadow: 0.2em 0.4em 14px rgba(0, 0, 0, 0.5);">
+                            <tr>
+                                <td style="border-spacing: 20px; vertical-align:top;" >
+                                    <p align="center" > 
+                                        <div id="myNav" class="overlay">
+                                            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                                            <div class="overlay-content">
+                                                <div class="">
+                                                    <p> 
+                                                        {% if men %}
+                                                            <span style="font-size:30px;cursor:pointer" onclick="openNav()"><img src = "static/img/img_avatar.png " alt = "Аватар" style="border-radius: 50%; width: 150px;"></span>
+                                                        {% elif men == None %}
+                                                            <span style="font-size:30px;cursor:pointer" onclick="openNav()"><img src = "static/img/img_avatar3.png " alt = "Аватар" style="border-radius: 50%; width: 150px;"></span>
+                                                        {% else %}
+                                                            <span style="font-size:30px;cursor:pointer" onclick="openNav()"><img src = "static/img/img_avatar2.png " alt = "Аватар" style="border-radius: 50%; width: 150px;"></span>
+                                                        {% endif %}
+                                                    </p>
+                                                    {% if men %}
+                                                        <p style="color: rgb(255, 255, 255);">Теперь ты в наших кругах, брат.</p>
+                                                    {% elif men == None %}
+                                                        <p style="color: rgb(255, 255, 255);">Парень или девочка?</p>
+                                                        <div class="div1"><a href="girl" style="color: white; font-size: 20px;">Да, я девочка!</a></div>
+                                                        <p></p>
+                                                        <div class="div1" style="width: 180px;"><a href="men" style="color: white; font-size: 20px;">Ты что, я мужик!</a></div>
+                                                    {% else %}
+                                                        <p style="color: rgb(255, 255, 255);">Теперь ты в наших кругах, сестра.</p>
+                                                    {% endif %}
+                                                    <p></p>
+                                                    <p style="color: rgb(255, 255, 255);"><a href="delete_log">Выйти</a></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        {% if men %}
+                                            <span style="font-size:30px;cursor:pointer" onclick="openNav()"><img src = "static/img/img_avatar.png " class="shadow-4" alt = "Аватар" style="border-radius: 50%; float: right; width: 70px; margin-right: 10px; margin-top: 1px;"></span>
+                                        {% elif men == None %}
+                                        <span style="font-size:30px;cursor:pointer" onclick="openNav()"><img src = "static/img/img_avatar3.png " class="shadow-4" alt = "Аватар" style="border-radius: 50%; float: right; width: 70px; margin-right: 10px; margin-top: 1px;"></span>
+                                        {% else %}
+                                            <span style="font-size:30px;cursor:pointer" onclick="openNav()"><img src = "static/img/img_avatar2.png " class="shadow-4" alt = "Аватар" style="border-radius: 50%; float: right; width: 70px; margin-right: 10px; margin-top: 1px;"></span>
+                                        {% endif %}
+                                        <script>
+                                        function openNav() {
+                                            document.getElementById("myNav").style.height = "100%";
+                                        }
+                                        
+                                        function closeNav() {
+                                            document.getElementById("myNav").style.height = "0%";
+                                        }
+                                        </script>
+                                    </p>
+                                </td>
+                        
+                                
+                            </tr>
+                            <tr>
+                                <td style="vertical-align:bottom;">
+                                    <p align="center" ><a href="delete_log" id="knopka" style="text-decoration: none;">Выйти</a></p>
+                                </td>
+                            </tr>
+                        </table>
+
+                    </div>
+                {% endif %}
+            </p>
+        </div>
+            <div>
+                <ul id="navbar">
+                    <li><a href="/" id="">Книги</a></li>
+                    {% if flag == False %}
+                        <li><a href="login" class="ali">Войти</a></li>
+                        <li><a href="register" class="ali">Регистрация</a></li>
+                    {% endif %}
+                    <li><a href="Lyshee" id="">Лучшее</a></li>
+                    <li><a href="Contact" id="">Контакты</a></li>
+                </ul>
+            </div>
+    </div>
+    <div style="margin-left: 25%;">
+        {% block content %}
+            {% for post in User %}
+                <div class="post">
+                    <div class="title">
+                        <p>
+                            <table style="outline: 2px solid rgb(0, 0, 0); width: 200px; height: 100px;">
+                                <td>
+                                    <p style="font-size: 20px;">id: <span style="color: rgba(27, 38, 99, 0.959);">{{ post.id }}</span> </p>
+                                    <p style="font-size: 20px;">login: <span style="color: rgba(27, 38, 99, 0.959);">{{ post.login }}</span> </p>
+                                    <p style="font-size: 20px;">hashed_password: <span style="color: rgba(27, 38, 99, 0.959);">{{ post.hashed_password }}</span> </p>
+                                    <p style="font-size: 20px;">date: <span style="color: rrgba(27, 38, 99, 0.959)ed;">{{ post.date }}</span> </p>
+                                </td>
+                            </table>
+                        </p>
+                    </div>
+                </div>
+            {% endfor %}
+        {% endblock %}
+    </div>
+</body>
+</html>
